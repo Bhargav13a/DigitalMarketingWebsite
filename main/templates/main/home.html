@@ -1,0 +1,505 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}Buzz Craft Socials — Home{% endblock %}
+
+{% block content %}
+
+<!-- HERO SECTION -->
+<section style="
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(135deg, #000428,rgba(179, 194, 208, 0.63));
+    color: white;
+">
+    <h1 style="font-size: 50px; font-weight: 700; margin-bottom: 10px;">
+        Buzz Craft Socials
+    </h1>
+    <p style="font-size: 20px; opacity: 0.9;">
+        Transforming Brands through Creativity, Strategy & Digital Innovation
+    </p>
+
+    <button onclick="scrollToSection('services')" style="
+        margin-top: 30px;
+        padding: 12px 28px;
+        background: white;
+        color: #004e92;
+        font-weight: 600;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: 0.3s;
+    " onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1">
+        Explore Services ↓
+    </button>
+</section>
+<script>
+  function scrollToSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      if(section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+      }
+  }
+
+  function scrollToContact(serviceName) {
+      const section = document.getElementById('contact');
+      if(section) {
+          section.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Fill the service field in contact form
+      const serviceField = document.querySelector('#service'); // or #contact-service if that's your input
+      if(serviceField) {
+          serviceField.value = serviceName;
+      }
+  }
+</script>
+
+
+<!-- SERVICES SECTION -->
+<section id="services" style="padding: 80px 20px; background: #f7f9fc;">
+  <h2 style="text-align: center; margin-bottom: 50px; font-size: 38px; font-weight: 700; color: #1a1a1a;">
+      Our Premium Services
+  </h2>
+
+  <div style="max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;">
+
+      {% for service, desc in services %}
+      <div onclick="scrollToContact('{{ service }}')" style="cursor:pointer; background: white; padding: 25px; border-radius: 14px; box-shadow: rgba(0,0,0,0.08) 0px 4px 12px; transition: 0.3s; border: 1px solid #eaeaea;"
+          onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='rgba(0,0,0,0.12) 0px 10px 20px';"
+          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='rgba(0,0,0,0.08) 0px 4px 12px';">
+          
+          <h3 style="color:#004e92; font-size: 22px; font-weight: 700; margin-bottom: 10px;">
+              {{ service }}
+          </h3>
+          <p style="color:#444; font-size: 15px; line-height: 1.6;">
+              {{ desc }}
+          </p>
+      </div>
+      {% endfor %}
+
+  </div>
+</section>
+
+<script>
+function scrollToContact(serviceName) {
+  // Scroll smoothly to the contact_us section
+  const contactSection = document.getElementById('contact-us');
+  if(contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Fill the service field in the contact form
+  const serviceField = document.getElementById('contact-service');
+  if(serviceField) {
+      serviceField.value = serviceName;
+  }
+}
+</script>
+
+  <!-- ========================= -->
+<!-- 📊 PRICING SECTION -->
+<!-- ========================= -->
+<section id="pricing" style="padding: 80px 20px; background: #ffffff; color:#1a1a1a;">
+  <h2 style="text-align: center; margin-bottom: 50px; font-size: 38px; font-weight: 700; color: #1a1a1a;">
+      Service-Wise Pricing
+  </h2>
+
+  <div style="max-width: 1100px; margin: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px;">
+
+      <!-- Starter Plan -->
+      <div onclick="scrollToContact('Starter Plan')" style="
+          cursor: pointer;
+          background: #f7f9fc;
+          padding: 30px;
+          border-radius: 14px;
+          box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+          border: 1px solid #eaeaea;
+          transition: 0.3s;
+      "
+      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='rgba(0,0,0,0.12) 0px 10px 20px';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='rgba(0,0,0,0.08) 0px 4px 12px';">
+          <h3 style="color:#004e92; font-size: 22px; font-weight: 700; margin-bottom: 10px;">Starter Plan</h3>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              For small businesses starting online
+          </p>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              Manage 2 social media platforms<br>
+              8-10 creative posts per month
+          </p>
+          <p style="font-weight:700; color:#1a1a1a; font-size:16px;">₹12,000 / MONTH</p>
+      </div>
+
+      <!-- Growth Plan -->
+      <div onclick="scrollToContact('Growth Plan')" style="
+          cursor: pointer;
+          background: #f7f9fc;
+          padding: 30px;
+          border-radius: 14px;
+          box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+          border: 1px solid #eaeaea;
+          transition: 0.3s;
+      "
+      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='rgba(0,0,0,0.12) 0px 10px 20px';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='rgba(0,0,0,0.08) 0px 4px 12px';">
+          <h3 style="color:#004e92; font-size: 22px; font-weight: 700; margin-bottom: 10px;">Growth Plan</h3>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              For growing businesses
+          </p>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              Manage 3-4 social platforms<br>
+              12-16 posts + reels per month
+          </p>
+          <p style="font-weight:700; color:#1a1a1a; font-size:16px;">₹25,000 / MONTH</p>
+      </div>
+
+      <!-- Premium Plan -->
+      <div onclick="scrollToContact('Premium Plan')" style="
+          cursor: pointer;
+          background: #f7f9fc;
+          padding: 30px;
+          border-radius: 14px;
+          box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+          border: 1px solid #eaeaea;
+          transition: 0.3s;
+      "
+      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='rgba(0,0,0,0.12) 0px 10px 20px';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='rgba(0,0,0,0.08) 0px 4px 12px';">
+          <h3 style="color:#004e92; font-size: 22px; font-weight: 700; margin-bottom: 10px;">Premium Plan</h3>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              For brands that want full marketing support
+          </p>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              All social platforms managed<br>
+              Paid ads (Facebook + Google)<br>
+              SEO & 4 blogs per month<br>
+              Email marketing setup<br>
+              Weekly performance updates<br>
+              Dedicated manager
+          </p>
+          <p style="font-weight:700; color:#1a1a1a; font-size:16px;">₹55,000 / MONTH</p>
+      </div>
+
+      <!-- Add-ons -->
+      <div onclick="scrollToContact('Add-ons')" style="
+          cursor: pointer;
+          background: #f7f9fc;
+          padding: 30px;
+          border-radius: 14px;
+          box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+          border: 1px solid #eaeaea;
+          transition: 0.3s;
+      "
+      onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='rgba(0,0,0,0.12) 0px 10px 20px';"
+      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='rgba(0,0,0,0.08) 0px 4px 12px';">
+          <h3 style="color:#004e92; font-size: 22px; font-weight: 700; margin-bottom: 10px;">Add-Ons</h3>
+          <p style="color:#444; font-size: 15px; line-height: 1.6; margin-bottom: 10px;">
+              Website design: ₹25,000 - ₹60,000 (one-time)<br>
+              Branding kit: ₹10,000 - ₹20,000<br>
+              Influencer marketing: starts ₹10,000<br>
+              Google Ads management: 10-15% of ad spend
+          </p>
+      </div>
+
+  </div>
+</section>
+
+<script>
+function scrollToContact(serviceName) {
+    // Scroll to contact_us section
+    document.querySelector('#contact-us').scrollIntoView({ behavior: 'smooth' });
+
+    // Fill the service field
+    const serviceField = document.querySelector('#contact-service');
+    if(serviceField) {
+        serviceField.value = serviceName;
+    }
+}
+</script>
+
+
+
+
+
+<!-- ABOUT SECTION -->
+<section id="about" style="
+    padding: 80px 20px;
+    background: #f7f9fc;
+">
+    <h2 style="
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 38px;
+        font-weight: 700;
+        color: #1a1a1a;
+    ">
+        Who We Are
+    </h2>
+
+    <div style="
+        max-width: 1100px;
+        margin: auto;
+        font-size: 17px;
+        line-height: 1.8;
+        color: #444;
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+        border: 1px solid #eaeaea;
+    ">
+        <p>
+            Buzz Craft Socials is a modern Digital Marketing & Branding Agency built with one mission —
+            to help businesses grow through premium creativity, powerful strategies, and the perfect blend of
+            design + technology. We're passionate about building a brand’s digital identity from scratch
+            and helping companies scale using high-impact content and data-driven strategies.
+        </p>
+    </div>
+</section>
+
+
+
+<!-- WHY CHOOSE US SECTION -->
+<section style="
+    padding: 80px 20px;
+    background: white;
+">
+    <h2 style="
+        text-align: center;
+        margin-bottom: 50px;
+        font-size: 38px;
+        font-weight: 700;
+        color: #1a1a1a;
+    ">
+        Why Choose Buzz Craft Socials?
+    </h2>
+
+    <div style="
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 25px;
+    ">
+        <div style="
+            background: #f7f9fc;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+            border: 1px solid #eaeaea;
+            transition: 0.3s;
+        "
+        onmouseover="this.style.transform='translateY(-6px)'"
+        onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="font-size: 22px; color:#004e92; margin-bottom: 10px;">Creative Excellence</h3>
+            <p style="color:#444">We craft visually stunning content and designs that elevate brands.</p>
+        </div>
+
+        <div style="
+            background: #f7f9fc;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+            border: 1px solid #eaeaea;
+            transition: 0.3s;
+        "
+        onmouseover="this.style.transform='translateY(-6px)'"
+        onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="font-size: 22px; color:#004e92; margin-bottom: 10px;">Data-Driven Strategy</h3>
+            <p style="color:#444">Every campaign and idea is backed by analytics, trends & research.</p>
+        </div>
+
+        <div style="
+            background: #f7f9fc;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+            border: 1px solid #eaeaea;
+            transition: 0.3s;
+        "
+        onmouseover="this.style.transform='translateY(-6px)'"
+        onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="font-size: 22px; color:#004e92; margin-bottom: 10px;">End-to-End Solutions</h3>
+            <p style="color:#444">From branding to social media to ads, we handle everything for you.</p>
+        </div>
+
+        <div style="
+            background: #f7f9fc;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+            border: 1px solid #eaeaea;
+            transition: 0.3s;
+        "
+        onmouseover="this.style.transform='translateY(-6px)'"
+        onmouseout="this.style.transform='translateY(0)'">
+            <h3 style="font-size: 22px; color:#004e92; margin-bottom: 10px;">Premium Quality Control</h3>
+            <p style="color:#444">Our standards are high — every output goes through expert review.</p>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- OUR MISSION SECTION -->
+<section style="
+    padding: 80px 20px;
+    background: #f7f9fc;
+">
+    <h2 style="
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 38px;
+        font-weight: 700;
+        color: #1a1a1a;
+    ">
+        Our Mission
+    </h2>
+
+    <div style="
+        max-width: 1100px;
+        margin: auto;
+        background: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+        border: 1px solid #eaeaea;
+        font-size: 17px;
+        line-height: 1.8;
+        color: #444;
+    ">
+        Our mission is to empower brands with strong digital presence, modern storytelling, and result-driven marketing strategies that bring real growth.  
+        We aim to be the creative force behind brands that want to shine online.
+    </div>
+</section>
+
+
+
+<!-- OUR VISION SECTION -->
+<section style="
+    padding: 80px 20px;
+    background: white;
+">
+    <h2 style="
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 38px;
+        font-weight: 700;
+        color: #1a1a1a;
+    ">
+        Our Vision
+    </h2>
+
+    <div style="
+        max-width: 1100px;
+        margin: auto;
+        background: #f7f9fc;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: rgba(0,0,0,0.08) 0px 4px 12px;
+        border: 1px solid #eaeaea;
+        font-size: 17px;
+        line-height: 1.8;
+        color: #444;
+    ">
+        To become one of India’s most trusted creative agencies — known for delivering
+        premium content, effective marketing, and scalable digital solutions that help
+        brands thrive in a competitive world.
+    </div>
+</section>
+
+
+<!-- CONTACT US SECTION -->
+<section id="contact-us" class="py-16 background: linear-gradient(135deg,rgb(66, 69, 105),rgba(179, 194, 208, 0.63));">
+  <div class="max-w-7xl mx-auto px-6">
+      <h2 class="text-4xl font-extrabold text-center mb-8">Get in Touch with Us</h2>
+      <p class="text-center text-slate-300 mb-12">Fill out the form below and our team will reach out to you soon.</p>
+
+      <form id="contactForm" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-800/60 p-8 rounded-xl shadow-lg border border-slate-700">
+          <!-- Name -->
+          <div class="flex flex-col">
+              <label for="name" class="mb-2 font-semibold text-slate-200">Full Name *</label>
+              <input type="text" id="name" name="name" required
+                  class="p-3 rounded-md bg-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          </div>
+
+          <!-- Company Name -->
+          <div class="flex flex-col">
+              <label for="company" class="mb-2 font-semibold text-slate-200">Company Name *</label>
+              <input type="text" id="company" name="company" required
+                  class="p-3 rounded-md bg-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col">
+              <label for="email" class="mb-2 font-semibold text-slate-200">Email *</label>
+              <input type="email" id="email" name="email" required
+                  class="p-3 rounded-md bg-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          </div>
+
+          <!-- Phone -->
+          <div class="flex flex-col">
+              <label for="phone" class="mb-2 font-semibold text-slate-200">Phone *</label>
+              <input type="tel" id="phone" name="phone" required
+                  class="p-3 rounded-md bg-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+          </div>
+
+          <!-- Service Type -->
+          <div class="flex flex-col md:col-span-2">
+              <label for="service" class="mb-2 font-semibold text-slate-200">Type of Services *</label>
+              <select id="service" name="service" required
+                  class="p-3 rounded-md bg-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                  <option value="">-- Select a Service --</option>
+                  <option value="Social Media Marketing & Management">Social Media Marketing & Management</option>
+                  <option value="Content Marketing">Content Marketing</option>
+                  <option value="Email Marketing & Automation">Email Marketing & Automation</option>
+                  <option value="Paid Social Advertising">Paid Social Advertising</option>
+                  <option value="Online Reputation Management">Online Reputation Management</option>
+                  <option value="Branding & Re-branding">Branding & Re-branding</option>
+                  <option value="E-commerce Marketing">E-commerce Marketing</option>
+                  <option value="App Store Optimisation">App Store Optimisation</option>
+                  <option value="Influencer Marketing">Influencer Marketing</option>
+                  <option value="Video Production & Marketing">Video Production & Marketing</option>
+                  <option value="Marketplace & Channel Marketing">Marketplace & Channel Marketing</option>
+              </select>
+          </div>
+
+          <!-- Message -->
+          <div class="flex flex-col md:col-span-2">
+              <label for="message" class="mb-2 font-semibold text-slate-200">Message</label>
+              <textarea id="message" name="message" rows="5"
+                  class="p-3 rounded-md bg-slate-700 text-slate-100 focus:outline-none focus:ring-2 focus:ring-yellow-400"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="md:col-span-2 text-center">
+              <button type="submit" class="px-8 py-3 bg-yellow-500 text-slate-900 font-semibold rounded-md hover:brightness-95 transition">
+                  Submit
+              </button>
+          </div>
+      </form>
+  </div>
+</section>
+
+<!-- Optional: Form submission handling -->
+<script>
+document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  // Collect form data
+  const formData = new FormData(this);
+  const data = Object.fromEntries(formData.entries());
+
+  console.log("Form submitted:", data);
+  
+  // TODO: Replace with actual backend submission logic (AJAX / Django POST)
+  alert('Thank you, ' + data.name + '! Your request has been submitted.');
+
+  // Reset form
+  this.reset();
+});
+</script>
+
+
+
+{% endblock %}
