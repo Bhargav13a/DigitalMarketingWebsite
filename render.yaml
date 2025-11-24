@@ -1,9 +1,10 @@
 services:
   - type: web
     name: buzz-craft-socials
-    runtime: python
+    env: python
+    plan: free
     buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn buzz_craft_socials.wsgi:application"
     envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: buzz_craft_socials.settings
+      - key: PYTHON_VERSION
+        value: 3.10
