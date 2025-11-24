@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: django-app
+    name: buzz-craft-socials
     runtime: python
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn PROJECT_NAME.wsgi"
+    startCommand: "gunicorn buzz_craft_socials.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
-        value: PROJECT_NAME.settings
+        value: buzz_craft_socials.settings
