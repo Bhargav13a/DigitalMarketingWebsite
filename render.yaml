@@ -3,8 +3,11 @@ services:
     name: buzz-craft-socials
     env: python
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "gunicorn buzz_craft_socials.wsgi:application"
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn buzz_craft_socials.wsgi:application
     envVars:
       - key: PYTHON_VERSION
-        value: 3.10
+        value: 3.11
+      - key: DJANGO_SETTINGS_MODULE
+        value: buzz_craft_socials.settings
+    staticPublishPath: staticfiles
